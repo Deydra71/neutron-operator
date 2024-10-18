@@ -522,12 +522,12 @@ func (r *NeutronAPIReconciler) reconcileInit(
 		}
 	}
 
-	// Combine all cert hashes into a single hash
-	combinedCertsHash, err := util.HashOfInputHashes(secretVars)
-	if err != nil {
-		return ctrl.Result{}, err
-	}
-	secretVars[tls.TLSHashName] = env.SetValue(combinedCertsHash)
+	// // Combine all cert hashes into a single hash
+	// combinedCertsHash, err := util.HashOfInputHashes(secretVars)
+	// if err != nil {
+	// 	return ctrl.Result{}, err
+	// }
+	// secretVars[tls.TLSHashName] = env.SetValue(combinedCertsHash)
 
 	// all cert input checks out so report InputReady
 	instance.Status.Conditions.MarkTrue(condition.TLSInputReadyCondition, condition.InputReadyMessage)
